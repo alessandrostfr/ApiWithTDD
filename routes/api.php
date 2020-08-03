@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('posts', 'Api\PostController')->names('posts');
+Route::apiResource('posts', 'Api\PostController')->middleware('auth:api')->names('posts');
 

@@ -18,7 +18,8 @@ class PostController extends Controller
 
     public function index()
     {
-        //
+        $posts = Post::paginate();
+        return response()->json($posts, 200);
     }
 
 
@@ -36,15 +37,18 @@ class PostController extends Controller
     }
 
 
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        return response()->json($post);
     }
 
 
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->json(null, 204);
     }
 
 }
